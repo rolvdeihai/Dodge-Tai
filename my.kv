@@ -1,0 +1,116 @@
+#:import random random
+
+<Stones>:
+    size: 80, 80
+    canvas:
+        Rectangle:
+            source : 'poop.png'
+            pos: self.pos
+            size: self.size
+
+<Spaceship>:
+    size: 50, 50
+    canvas:
+        Rectangle:
+            source: 'spaceship.png'
+            pos: self.pos
+            size: self.size
+
+
+<SpaceGame>:
+    player : ship
+    stones : stones
+    restartpos : restartpos
+    playbuttonpos : playbuttonpos
+    highscorepos : highscorepos
+    pausepos : pausepos
+    playpos : playpos
+    currenthighscorepos : currenthighscorepos
+    soundscorepos : soundscorepos
+
+    canvas:
+        Rectangle:
+            source: 'langit.jpg'
+            pos: self.pos
+            size: self.size
+
+    Button:
+        x : root.x
+        center_x : root.center_x
+        size : 50, 50
+        on_press: root.moveship()
+
+    Spaceship:
+        id: ship
+        y : self.height
+        center_x : root.center_x
+
+    Stones:
+        id: stones
+        y : root.height - self.height
+        center_x : root.center_x
+
+    Label:
+        font_size : 50
+        center_x : root.center_x
+        top : root.top - 10
+        text : str(root.player.score)
+
+    Label:
+        id : highscorepos
+        font_size : 50
+        center_x : root.center_x
+        top : root.top - self.height - self.height
+        text : 'Best ' + str(root.player.highscore)
+
+    Label:
+        id : currenthighscorepos
+        font_size : 50
+        x : root.width + root.width
+        top : root.height + root.height
+        text : 'Best ' + str(root.player.current_highscore)
+
+    Button:
+        size : 80, 80
+        id : playbuttonpos
+        text: 'Play'
+        on_release:
+            root.startgame()
+
+    Button:
+        size: 80, 80
+        id : restartpos
+        text: 'Try Again'
+        top : root.top + root.height
+        x : root.width + root.width
+        on_release:
+            root.restart_game()
+
+    Button:
+        size: 80, 80
+        id : pausepos
+        text: 'Pause'
+        top : root.top + root.height
+        x : root.width + root.width
+        on_release: root.pause()
+
+    Button:
+        size: 80, 80
+        id : playpos
+        text : 'Play'
+        top : root.top + root.height
+        x : root.width + root.width
+        on_release : root.play()
+
+    Button:
+        size: 80, 80
+        id : soundscorepos
+        text : 'Sound On' if root.player.soundscore == 1 else 'Sound Off'
+        top : root.top
+        x : root.width - self.width
+        on_release :
+            root.soundvolume()
+
+
+
+
