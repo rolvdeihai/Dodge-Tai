@@ -66,13 +66,13 @@ class SpaceGame(Widget):
             self.player.score += 10
 
         if self.player.score == 100:
-            self.stones.velocity_y = -4.5
+            self.stones.velocity_y = -6
 
         if self.player.score == 500:
-            self.stones.velocity_y = -5
+            self.stones.velocity_y = -8
 
         if self.player.score == 2000:
-            self.stones.velocity_y = -5.5
+            self.stones.velocity_y = -10
 
         if self.stones.collide_widget(self.player):
             with open('highscore.txt', 'w') as f:
@@ -105,8 +105,8 @@ class SpaceGame(Widget):
                 self.sound.play()
 
     def startgame(self):
-        self.player.velocity = Vector(4, 0)
-        self.stones.velocity = Vector(0, -4)
+        self.player.velocity = Vector(5, 0)
+        self.stones.velocity = Vector(0, -5)
         self.playbuttonpos.x = Window.height + Window.height
         self.playbuttonpos.y = Window.width + Window.width
         self.highscorepos.x = Window.height + Window.height
@@ -133,19 +133,19 @@ class SpaceGame(Widget):
             self.stones.velocity_y = -4
 
         if self.player.score > 100:
-            self.stones.velocity_y = -4.5
+            self.stones.velocity_y = -6
 
         if self.player.score > 500:
-            self.stones.velocity_y = -5
+            self.stones.velocity_y = -8
 
         if self.player.score > 2000:
-            self.stones.velocity_y = -5.5
+            self.stones.velocity_y = -10
 
         if self.player.pausescore < 0:
-            self.player.velocity_x = -6
+            self.player.velocity_x = -5
 
         if self.player.pausescore > 0:
-            self.player.velocity_x = -6.5
+            self.player.velocity_x = 5
 
         self.playpos.x = 0
         self.playpos.y = Window.width + Window.width

@@ -1,7 +1,7 @@
 #:import random random
 
 <Stones>:
-    size: 80, 80
+    size: 400, 400
     canvas:
         Rectangle:
             source : 'poop.png'
@@ -9,7 +9,7 @@
             size: self.size
 
 <Spaceship>:
-    size: 50, 50
+    size: 120, 120
     canvas:
         Rectangle:
             source: 'spaceship.png'
@@ -37,7 +37,7 @@
     Button:
         x : root.x
         center_x : root.center_x
-        size : 50, 50
+        size : 100, 100
         on_press: root.moveship()
 
     Spaceship:
@@ -47,7 +47,7 @@
 
     Stones:
         id: stones
-        y : root.height - self.height
+        y : root.height
         center_x : root.center_x
 
     Label:
@@ -71,41 +71,41 @@
         text : 'Best ' + str(root.player.current_highscore)
 
     Button:
-        size : 80, 80
+        background_normal : 'start.png'
+        size : 100, 100
         id : playbuttonpos
-        text: 'Play'
         on_release:
             root.startgame()
 
     Button:
-        size: 80, 80
+        background_normal : 'start.png'
+        size: 100, 100
         id : restartpos
-        text: 'Try Again'
         top : root.top + root.height
         x : root.width + root.width
         on_release:
             root.restart_game()
 
     Button:
-        size: 80, 80
+        background_normal : 'paused.png'
+        size: 100, 100
         id : pausepos
-        text: 'Pause'
         top : root.top + root.height
         x : root.width + root.width
         on_release: root.pause()
 
     Button:
-        size: 80, 80
+        background_normal : 'start.png'
+        size: 100, 100
         id : playpos
-        text : 'Play'
         top : root.top + root.height
         x : root.width + root.width
         on_release : root.play()
 
     Button:
-        size: 80, 80
+        background_normal : 'soundon.png' if root.player.soundscore == 1 else 'soundoff.png'
+        size: 100, 100
         id : soundscorepos
-        text : 'Sound On' if root.player.soundscore == 1 else 'Sound Off'
         top : root.top
         x : root.width - self.width
         on_release :
