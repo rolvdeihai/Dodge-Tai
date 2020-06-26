@@ -1,7 +1,6 @@
 #:import random random
 
 <Stones>:
-    size: 400, 400
     canvas:
         Rectangle:
             source : 'poop.png'
@@ -9,7 +8,6 @@
             size: self.size
 
 <Spaceship>:
-    size: 120, 120
     canvas:
         Rectangle:
             source: 'spaceship.png'
@@ -35,17 +33,19 @@
             size: self.size
 
     Button:
-        x : root.x
-        center_x : root.center_x
-        size : 100, 100
+        background_normal : 'move.png'
+        x : root.width*0.5 - self.width / 2
+        size : root.width*0.1, root.width*0.1
         on_press: root.moveship()
 
     Spaceship:
+        size : root.width*0.1, root.width*0.1
         id: ship
         y : self.height
-        center_x : root.center_x
+        x : root.width*0.5 - self.width / 2
 
     Stones:
+        size : root.width*0.5, root.width*0.5
         id: stones
         y : root.height
         center_x : root.center_x
@@ -72,14 +72,14 @@
 
     Button:
         background_normal : 'start.png'
-        size : 100, 100
+        size : root.width*0.1, root.width*0.1
         id : playbuttonpos
         on_release:
             root.startgame()
 
     Button:
         background_normal : 'start.png'
-        size: 100, 100
+        size: root.width*0.1, root.width*0.1
         id : restartpos
         top : root.top + root.height
         x : root.width + root.width
@@ -88,7 +88,7 @@
 
     Button:
         background_normal : 'paused.png'
-        size: 100, 100
+        size: root.width*0.1, root.width*0.1
         id : pausepos
         top : root.top + root.height
         x : root.width + root.width
@@ -96,7 +96,7 @@
 
     Button:
         background_normal : 'start.png'
-        size: 100, 100
+        size: root.width*0.1, root.width*0.1
         id : playpos
         top : root.top + root.height
         x : root.width + root.width
@@ -104,7 +104,7 @@
 
     Button:
         background_normal : 'soundon.png' if root.player.soundscore == 1 else 'soundoff.png'
-        size: 100, 100
+        size: root.width*0.1, root.width*0.1
         id : soundscorepos
         top : root.top
         x : root.width - self.width

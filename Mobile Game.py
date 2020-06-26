@@ -114,6 +114,7 @@ class SpaceGame(Widget):
         self.pausepos.x = 0
         self.pausepos.y = Window.height - self.pausepos.height
         self.soundscorepos.x = Window.width + Window.width
+        self.currenthighscorepos.x = Window.width + Window.width
 
     def pause(self):
         self.stones.velocity = Vector(0, 0)
